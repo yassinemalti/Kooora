@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/accueil"
+            android:icon="@drawable/home_button"
+            android:title="استقبال" />
+        <item
+            android:id="@+id/presentation"
+            android:icon="@drawable/hotel_with_three_floors"
+            android:title="تعريف المتحف" />
+        <item
+            android:id="@+id/motdudirecteur"
+            android:icon="@drawable/microphone_of_voice"
+            android:title="كلمة المدير" />
+        <item
+            android:id="@+id/journalofficiel"
+            android:icon="@drawable/copy_content"
+            android:title="الجريدة الرسمية" />
+        <item
+            android:id="@+id/galerie"
+            android:icon="@drawable/mountain_range"
+            android:title="صور للمتحف" />
+        <item
+            android:id="@+id/contact"
+            android:icon="@drawable/drafts_evelope_button"
+            android:title="اتصل بنا" />
+        <item
+            android:id="@+id/localiser"
+            android:icon="@drawable/map_placeholder"
+            android:title="تحديد الموقع" />
+    </group>
+
+</menu>

@@ -1,0 +1,67 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    tools:context="com.wordpress.yassinemalti.kooora.activity.MotDuDirecteurFragment">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@drawable/directeur" />
+
+                <TextView
+                    android:id="@+id/textViewPresentation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="100dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="بسم الله الرحمن الرحيم والصلاة و السلام على أشرف المرسلين، بكل فخر واعتزاز أبارك باسمي وباسم أسرة المتحف العمومي الوطني للفن والتاريخ لمدينة تلمسان إزديان المتحف بتطبيق رسمي على متجر غوغل للتطبيقات على الأجهزة الذكية.\n\nأتمنى أن يكون حلقة تواصل وهمزة وصل بين جميع موظفي المتحف و زملائهم من المتاحف الوطنية الأخرى وجميع أسرة قطاع الثقافة والزوار والمهتمين بنشاطات المتحف وفعالياته.\n\nوقد حرصنا على إنشاء هذا التطبيق وتفعيله لتحقيق رؤيتنا في التواصل المنشود و الهادف مع جميع المهتمين عبر التكنلوجيات الحديثة و نكون كعادتنا السباقين في هذا النوع من المبادرات على غرار سابقاتها.\n\nآملين أن يرفع ذلك من مستوى أداء متحفنا في مجال الخدمة العمومية الثقافية لتعميق أواصر التعاون والمشاركة الفعالة من خلال هذا الحلقة الجديدة.\n\nلا تبخلوا علينا بآرائكم، أوقات طيبة نتمناها لكم و السلام عليكم و رحمة الله تعالى و بركاته.\n\nمدير المتحف\nالسيد نور الدين بن عزة"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal">
+
+        <com.google.android.gms.ads.NativeExpressAdView
+            android:id="@+id/adBanner_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ads:adUnitId="ca-app-pub-2326345806005611/7518070481"
+            ads:adSize="280x70"/>
+    </LinearLayout>
+
+</FrameLayout>

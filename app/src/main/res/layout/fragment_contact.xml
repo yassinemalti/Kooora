@@ -1,0 +1,242 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.wordpress.yassinemalti.kooora.activity.ContactFragment">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:text="يمكنكم الاتصال معنا عبر الهاتف أو عبر مواقع التواصل الإجتماعي أو عبر البريد الالتروني أو من خلال الاستمارة أدناه"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewAdresse"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:gravity="center_vertical"
+                    android:paddingRight="20dp"
+                    android:paddingTop="30dp"
+                    android:paddingBottom="20dp"
+                    android:textSize="14sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:layoutDirection="ltr"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewLienJournalOfficiel_11"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="0021343273543"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/phonecall" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:layoutDirection="ltr"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewLienJournalOfficiel_112"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="www.mahtlemcen.org"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView2112"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/worldshapepublic" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:layoutDirection="ltr"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewLienJournalOfficiel_111"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="contact@mahtlemcen.org"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView21"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/writeemail" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:layoutDirection="ltr"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewLienJournalOfficiel_1111"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="/MuseeArtHistoireTlemcen"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView211"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        ads:srcCompat="@drawable/facebooklogo" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right"
+                    android:layoutDirection="ltr"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/textViewLienJournalOfficiel_11111"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text=" @mahtlemcen"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageView21111"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        ads:srcCompat="@drawable/twitterlogo" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/objectEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="موضوع الرسالة"
+                    android:paddingRight="20dp"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/messageEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="مضمون الرسالة"
+                    android:paddingRight="20dp"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/buttonSend"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="إرسال"
+                    android:textAlignment="center"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/textViewPresentation2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="70dp"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal">
+
+        <com.google.android.gms.ads.NativeExpressAdView
+            android:id="@+id/adBanner_6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ads:adUnitId="ca-app-pub-2326345806005611/2948270086"
+            ads:adSize="280x70"/>
+    </LinearLayout>
+
+</FrameLayout>
