@@ -1,22 +1,21 @@
 package com.wordpress.yassinemalti.kooora.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.kooora.R;
 
-public class ContactFragment extends Fragment {
+public class AjourdhuiFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,17 +25,14 @@ public class ContactFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private EditText objetEditText;
-    private EditText messageEditText;
-
     private OnFragmentInteractionListener mListener;
 
-    public ContactFragment() {
-
+    public AjourdhuiFragment() {
+        // Required empty public constructor
     }
 
-    public static ContactFragment newInstance(String param1, String param2) {
-        ContactFragment fragment = new ContactFragment();
+    public static AjourdhuiFragment newInstance(String param1, String param2) {
+        AjourdhuiFragment fragment = new AjourdhuiFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -57,25 +53,25 @@ public class ContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_contact, container, false);
-        NativeExpressAdView adBanner_6 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_6);
-        AdRequest request_6 = new AdRequest.Builder().build();
-        adBanner_6.loadAd(request_6);
+        View rootView = inflater.inflate(R.layout.fragment_aujourdhui, container, false);
+        NativeExpressAdView adBanner_1 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_1);
+        AdRequest request_1 = new AdRequest.Builder().build();
+        adBanner_1.loadAd(request_1);
 
-        objetEditText = (EditText) rootView.findViewById(R.id.objectEditText);
-        messageEditText = (EditText) rootView.findViewById(R.id.messageEditText);
+        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
+        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
 
-        Button button = (Button) rootView.findViewById(R.id.buttonSend);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendEmail(v);
-            }
-        });
+        // Enable Javascript
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // Force links and redirects to open in the WebView instead of in a browser
+        myWebView.setWebViewClient(new WebViewClient());
 
         return rootView;
     }
 
+    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -102,30 +98,5 @@ public class ContactFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    protected void sendEmail(View v) {
-
-        String objectTextString = objetEditText.getText().toString();
-        String messageTextString = messageEditText.getText().toString();
-
-        String[] TO = {"contact@mahtlemcen.org"};
-        //String[] CC = {"xyz@gmail.com"};
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.setType("text/plain");
-
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
-        //emailIntent.putExtra(Intent.EXTRA_CC, CC);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, objectTextString);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, messageTextString);
-
-        try {
-            startActivity(Intent.createChooser(emailIntent, "اتصل بنا..."));
-
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getActivity(),
-                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
-        }
     }
 }

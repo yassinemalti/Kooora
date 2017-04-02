@@ -3,23 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.wordpress.yassinemalti.kooora.activity.GalerieFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.wordpress.yassinemalti.kooora.activity.ActualitesFragment">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
         android:id="@+id/ScrollView01"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
+        android:layout_height="fill_parent">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_view"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="90dp"
-                android:scrollbars="vertical" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <WebView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/activity_actualites_webview" />
+
+            </LinearLayout>
 
         </RelativeLayout>
 
@@ -34,10 +43,10 @@
         android:layout_gravity="bottom|center_horizontal">
 
         <com.google.android.gms.ads.NativeExpressAdView
-            android:id="@+id/adBanner_5"
+            android:id="@+id/adBanner_4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/1471536885"
+            ads:adUnitId="ca-app-pub-2326345806005611/8994803682"
             ads:adSize="280x70"/>
     </LinearLayout>
 

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.wordpress.yassinemalti.kooora.activity.HomeFragment">
+    tools:context="com.wordpress.yassinemalti.kooora.activity.AjourdhuiFragment">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ScrollView01"
@@ -26,7 +26,7 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/activity_main_webview" />
+                    android:id="@+id/activity_aujourdhui_webview" />
 
             </LinearLayout>
 

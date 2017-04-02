@@ -1,9 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.wordpress.yassinemalti.kooora.activity.LocaliserFragment">
+    tools:context="com.wordpress.yassinemalti.kooora.activity.DemainFragment">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ScrollView01"
@@ -20,34 +21,16 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:text="تحديد الموقع"
+                <WebView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:id="@+id/textView"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textAlignment="center"
-                    android:gravity="center_vertical"/>
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/activity_demain_webview" />
 
-                <TextView
-                    android:text="شارع أوت تلمسان"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:id="@+id/textViewAdresse"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:gravity="center_vertical"
-                    android:paddingRight="20dp"
-                    android:textSize="14sp"/>
+            </LinearLayout>
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapfragment"
-                    android:name="com.google.android.gms.maps.SupportMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"/>
-
-                </LinearLayout>
-
-            </RelativeLayout>
+        </RelativeLayout>
 
     </ScrollView>
 
@@ -60,10 +43,10 @@
         android:layout_gravity="bottom|center_horizontal">
 
         <com.google.android.gms.ads.NativeExpressAdView
-            android:id="@+id/adBanner_7"
+            android:id="@+id/adBanner_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/4425003285"
+            ads:adUnitId="ca-app-pub-2326345806005611/6041337285"
             ads:adSize="280x70"/>
     </LinearLayout>
 

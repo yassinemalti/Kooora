@@ -12,7 +12,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.kooora.R;
 
-public class MotDuDirecteurFragment extends Fragment {
+public class HierFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -24,12 +24,12 @@ public class MotDuDirecteurFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public MotDuDirecteurFragment() {
+    public HierFragment() {
 
     }
 
-    public static MotDuDirecteurFragment newInstance(String param1, String param2) {
-        MotDuDirecteurFragment fragment = new MotDuDirecteurFragment();
+    public static HierFragment newInstance(String param1, String param2) {
+        HierFragment fragment = new HierFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -50,7 +50,7 @@ public class MotDuDirecteurFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_mot_du_directeur, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_hier, container, false);
         NativeExpressAdView adBanner_3 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_3);
         AdRequest request_3 = new AdRequest.Builder().build();
         adBanner_3.loadAd(request_3);

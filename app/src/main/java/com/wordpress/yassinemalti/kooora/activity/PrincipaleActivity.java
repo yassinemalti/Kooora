@@ -27,13 +27,10 @@ import com.wordpress.yassinemalti.kooora.R;
 
 public class PrincipaleActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener,
-                    HomeFragment.OnFragmentInteractionListener,
-                    TodayFragment.OnFragmentInteractionListener,
-                    MotDuDirecteurFragment.OnFragmentInteractionListener,
-                    JournalOfficielFragment.OnFragmentInteractionListener,
-                    GalerieFragment.OnFragmentInteractionListener,
-                    ContactFragment.OnFragmentInteractionListener,
-                    LocaliserFragment.OnFragmentInteractionListener{
+                    AjourdhuiFragment.OnFragmentInteractionListener,
+                    DemainFragment.OnFragmentInteractionListener,
+                    HierFragment.OnFragmentInteractionListener,
+                    ActualitesFragment.OnFragmentInteractionListener{
 
     private boolean viewIsAtHome;
     boolean doubleBackToExitPressedOnce = false;
@@ -121,38 +118,23 @@ public class PrincipaleActivity extends AppCompatActivity
 
         switch (viewId) {
             case R.id.accueil:
-                fragment = new HomeFragment();
+                fragment = new AjourdhuiFragment();
                 title  = "استقبال";
                 viewIsAtHome = true;
                 break;
             case R.id.presentation:
-                fragment = new TodayFragment();
+                fragment = new DemainFragment();
                 title  = "تعريف المتحف";
                 viewIsAtHome = false;
                 break;
             case R.id.motdudirecteur:
-                fragment = new MotDuDirecteurFragment();
+                fragment = new HierFragment();
                 title  = "كلمة المدير";
                 viewIsAtHome = false;
                 break;
             case R.id.journalofficiel:
-                fragment = new JournalOfficielFragment();
+                fragment = new ActualitesFragment();
                 title  = "الجريدة الرسمية";
-                viewIsAtHome = false;
-                break;
-            case R.id.galerie:
-                fragment = new GalerieFragment();
-                title  = "صور للمتحف";
-                viewIsAtHome = false;
-                break;
-            case R.id.contact:
-                fragment = new ContactFragment();
-                title  = "اتصل بنا";
-                viewIsAtHome = false;
-                break;
-            case R.id.localiser:
-                fragment = new LocaliserFragment();
-                title  = "تحديد الموقع";
                 viewIsAtHome = false;
                 break;
         }

@@ -15,7 +15,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.kooora.R;
 
-public class TodayFragment extends Fragment {
+public class DemainFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,12 +27,12 @@ public class TodayFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public TodayFragment() {
+    public DemainFragment() {
         // Required empty public constructor
     }
 
-    public static TodayFragment newInstance(String param1, String param2) {
-        TodayFragment fragment = new TodayFragment();
+    public static DemainFragment newInstance(String param1, String param2) {
+        DemainFragment fragment = new DemainFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,12 +53,12 @@ public class TodayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_today, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_demain, container, false);
         NativeExpressAdView adBanner_2 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_2);
         AdRequest request_2 = new AdRequest.Builder().build();
         adBanner_2.loadAd(request_2);
 
-        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_today_webview);
+        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_demain_webview);
         myWebView.loadUrl("http://m.kooora.com/?region=-1&area=0");
 
         // Enable Javascript
