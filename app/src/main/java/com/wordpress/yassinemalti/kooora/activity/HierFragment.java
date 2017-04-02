@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
@@ -54,6 +57,17 @@ public class HierFragment extends Fragment {
         NativeExpressAdView adBanner_3 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_3);
         AdRequest request_3 = new AdRequest.Builder().build();
         adBanner_3.loadAd(request_3);
+
+
+        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_hier_webview);
+        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+
+        // Enable Javascript
+        WebSettings webSettings = myWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // Force links and redirects to open in the WebView instead of in a browser
+        myWebView.setWebViewClient(new WebViewClient());
 
         return rootView;
     }
