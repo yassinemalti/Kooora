@@ -61,8 +61,8 @@ public class PrincipaleActivity extends AppCompatActivity
 
         subscribeToPushService();
         firebaseDatabaseRefresh();
-        navigationView.setCheckedItem(R.id.accueil);
-        displayView(R.id.accueil);
+        navigationView.setCheckedItem(R.id.aujourdhui);
+        displayView(R.id.aujourdhui);
 
         }
 
@@ -74,8 +74,8 @@ public class PrincipaleActivity extends AppCompatActivity
         }
         if (!viewIsAtHome) {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setCheckedItem(R.id.accueil);
-            displayView(R.id.accueil);
+            navigationView.setCheckedItem(R.id.aujourdhui);
+            displayView(R.id.aujourdhui);
         } else {
             if (doubleBackToExitPressedOnce){
                 moveTaskToBack(true);
@@ -117,24 +117,24 @@ public class PrincipaleActivity extends AppCompatActivity
         currentViewID = viewId;
 
         switch (viewId) {
-            case R.id.accueil:
+            case R.id.aujourdhui:
                 fragment = new AjourdhuiFragment();
-                title  = "استقبال";
+                title  = "مباريات اليوم";
                 viewIsAtHome = true;
                 break;
-            case R.id.presentation:
+            case R.id.demain:
                 fragment = new DemainFragment();
-                title  = "تعريف المتحف";
+                title  = "مباريات الغد";
                 viewIsAtHome = false;
                 break;
-            case R.id.motdudirecteur:
+            case R.id.hier:
                 fragment = new HierFragment();
-                title  = "كلمة المدير";
+                title  = "مباريات أمس";
                 viewIsAtHome = false;
                 break;
-            case R.id.journalofficiel:
+            case R.id.actualites:
                 fragment = new ActualitesFragment();
-                title  = "الجريدة الرسمية";
+                title  = "أخبار الرياضة";
                 viewIsAtHome = false;
                 break;
         }

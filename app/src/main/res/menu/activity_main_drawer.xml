@@ -3,21 +3,36 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/accueil"
-            android:icon="@drawable/home_button"
-            android:title="استقبال" />
+            android:id="@+id/aujourdhui"
+            android:icon="@drawable/soccerball"
+            android:title="مباريات اليوم" />
         <item
-            android:id="@+id/presentation"
-            android:icon="@drawable/hotel_with_three_floors"
-            android:title="تعريف المتحف" />
+            android:id="@+id/demain"
+            android:icon="@drawable/soccerball"
+            android:title="مباريات الغد" />
         <item
-            android:id="@+id/motdudirecteur"
-            android:icon="@drawable/microphone_of_voice"
-            android:title="كلمة المدير" />
+            android:id="@+id/hier"
+            android:icon="@drawable/soccerball"
+            android:title="مباريات أمس" />
         <item
-            android:id="@+id/journalofficiel"
-            android:icon="@drawable/copy_content"
-            android:title="الجريدة الرسمية" />
+            android:id="@+id/actualites"
+            android:icon="@drawable/soccerball"
+            android:title="أخبار الرياضة" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/evaluer"
+            android:icon="@drawable/soccerball"
+            android:title="تقييم التطبيق" />
+        <item
+            android:id="@+id/partager"
+            android:icon="@drawable/soccerball"
+            android:title="شارك التطبيق" />
+        <item
+            android:id="@+id/apropos"
+            android:icon="@drawable/soccerball"
+            android:title="بخصوص التطبيق" />
     </group>
 
 </menu>
