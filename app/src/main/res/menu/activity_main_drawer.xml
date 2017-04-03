@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/actualiser"
-        android:title="تحديث"
-        app:showAsAction="always"/>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/maintenant"
+            android:icon="@drawable/maintenant"
+            android:title="مباريات الآن" />
         <item
             android:id="@+id/aujourdhui"
             android:icon="@drawable/aujourdhui"
@@ -32,10 +29,6 @@
     </group>
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/evaluer"
-            android:icon="@drawable/evaluer"
-            android:title="تقييم التطبيق" />
         <item
             android:id="@+id/partager"
             android:icon="@drawable/partager"

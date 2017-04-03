@@ -27,6 +27,7 @@ import com.wordpress.yassinemalti.kooora.R;
 
 public class PrincipaleActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener,
+                    MaintenantFragment.OnFragmentInteractionListener,
                     AjourdhuiFragment.OnFragmentInteractionListener,
                     DemainFragment.OnFragmentInteractionListener,
                     HierFragment.OnFragmentInteractionListener,
@@ -63,8 +64,8 @@ public class PrincipaleActivity extends AppCompatActivity
 
         subscribeToPushService();
         firebaseDatabaseRefresh();
-        navigationView.setCheckedItem(R.id.aujourdhui);
-        displayView(R.id.aujourdhui);
+        navigationView.setCheckedItem(R.id.maintenant);
+        displayView(R.id.maintenant);
 
         }
 
@@ -76,8 +77,8 @@ public class PrincipaleActivity extends AppCompatActivity
         }
         if (!viewIsAtHome) {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-            navigationView.setCheckedItem(R.id.aujourdhui);
-            displayView(R.id.aujourdhui);
+            navigationView.setCheckedItem(R.id.maintenant);
+            displayView(R.id.maintenant);
         } else {
             if (doubleBackToExitPressedOnce){
                 moveTaskToBack(true);
@@ -119,10 +120,15 @@ public class PrincipaleActivity extends AppCompatActivity
         currentViewID = viewId;
 
         switch (viewId) {
+            case R.id.maintenant:
+                fragment = new MaintenantFragment();
+                title  = "مباريات الآن";
+                viewIsAtHome = true;
+                break;
             case R.id.aujourdhui:
                 fragment = new AjourdhuiFragment();
                 title  = "مباريات اليوم";
-                viewIsAtHome = true;
+                viewIsAtHome = false;
                 break;
             case R.id.demain:
                 fragment = new DemainFragment();
