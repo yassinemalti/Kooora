@@ -4,34 +4,38 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/aujourdhui"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/aujourdhui"
             android:title="مباريات اليوم" />
         <item
             android:id="@+id/demain"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/demain"
             android:title="مباريات الغد" />
         <item
             android:id="@+id/hier"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/hier"
             android:title="مباريات أمس" />
         <item
             android:id="@+id/actualites"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/actualites"
             android:title="أخبار الرياضة" />
+        <item
+            android:id="@+id/liens"
+            android:icon="@drawable/liens"
+            android:title="روابط البث" />
     </group>
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/evaluer"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/evaluer"
             android:title="تقييم التطبيق" />
         <item
             android:id="@+id/partager"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/partager"
             android:title="شارك التطبيق" />
         <item
             android:id="@+id/apropos"
-            android:icon="@drawable/soccerball"
+            android:icon="@drawable/apropos"
             android:title="بخصوص التطبيق" />
     </group>
 

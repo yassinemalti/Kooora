@@ -30,7 +30,9 @@ public class PrincipaleActivity extends AppCompatActivity
                     AjourdhuiFragment.OnFragmentInteractionListener,
                     DemainFragment.OnFragmentInteractionListener,
                     HierFragment.OnFragmentInteractionListener,
-                    ActualitesFragment.OnFragmentInteractionListener{
+                    ActualitesFragment.OnFragmentInteractionListener,
+                    LiensFragment.OnFragmentInteractionListener,
+                    AproposFragment.OnFragmentInteractionListener{
 
     private boolean viewIsAtHome;
     boolean doubleBackToExitPressedOnce = false;
@@ -135,6 +137,16 @@ public class PrincipaleActivity extends AppCompatActivity
             case R.id.actualites:
                 fragment = new ActualitesFragment();
                 title  = "أخبار الرياضة";
+                viewIsAtHome = false;
+                break;
+            case R.id.liens:
+                fragment = new ActualitesFragment();
+                title  = "روابط البث";
+                viewIsAtHome = false;
+                break;
+            case R.id.apropos:
+                fragment = new ActualitesFragment();
+                title  = "بخصوص التطبيق";
                 viewIsAtHome = false;
                 break;
         }
