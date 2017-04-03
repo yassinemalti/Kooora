@@ -3,6 +3,7 @@ package com.wordpress.yassinemalti.kooora.activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,12 @@ import android.webkit.WebViewClient;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.kooora.R;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 public class MaintenantFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -59,9 +66,23 @@ public class MaintenantFragment extends Fragment {
         AdRequest request_0 = new AdRequest.Builder().build();
         adBanner_0.loadAd(request_0);
 
+        String url = "http://m.kooora.com/";
+        Document document = null;
+        try {
+            document = Jsoup.connect(url).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Elements elements = document.select("bigcontainer");
+
+        String html = elements.toString();
+        String mime = "text/html";
+        String encoding = "utf-8";
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
-        myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
+        //myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
+
+        //myWebView.loadData(html, mime, encoding);
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();
