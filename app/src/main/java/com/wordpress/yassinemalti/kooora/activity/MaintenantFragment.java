@@ -61,7 +61,7 @@ public class MaintenantFragment extends Fragment {
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
-        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+        myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

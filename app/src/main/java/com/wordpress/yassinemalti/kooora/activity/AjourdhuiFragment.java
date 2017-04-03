@@ -59,7 +59,7 @@ public class AjourdhuiFragment extends Fragment {
         adBanner_1.loadAd(request_1);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
-        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+        myWebView.loadUrl("http://m.kooora.com/?region=-1&area=0");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

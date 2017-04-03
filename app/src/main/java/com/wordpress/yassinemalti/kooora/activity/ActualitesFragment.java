@@ -60,7 +60,7 @@ public class ActualitesFragment extends Fragment {
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_actualites_webview);
-        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+        myWebView.loadUrl("http://m.kooora.com/?n=0&o=n");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

@@ -59,7 +59,7 @@ public class DemainFragment extends Fragment {
         adBanner_2.loadAd(request_2);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_demain_webview);
-        myWebView.loadUrl("http://m.kooora.com/?region=-1&area=0");
+        myWebView.loadUrl("http://m.kooora.com/?region=-4");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

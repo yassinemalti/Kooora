@@ -60,7 +60,7 @@ public class LiensFragment extends Fragment {
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_liens_webview);
-        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+        myWebView.loadUrl("http://m.kooora.com/?n=0&o=v");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

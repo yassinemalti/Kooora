@@ -60,7 +60,7 @@ public class HierFragment extends Fragment {
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_hier_webview);
-        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+        myWebView.loadUrl("http://m.kooora.com/?region=-3");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();

@@ -59,7 +59,7 @@ public class AproposFragment extends Fragment {
         adBanner_5.loadAd(request_5);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_apropos_webview);
-        myWebView.loadUrl("http://www.yalla-shoot.com/mobile/");
+        myWebView.loadUrl("http://yassinemalti.wordpress.com/");
 
         // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();
