@@ -5,7 +5,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +13,6 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
@@ -23,6 +20,7 @@ import com.wordpress.yassinemalti.kooora.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -30,6 +28,7 @@ import java.io.IOException;
 public class MaintenantFragment extends Fragment {
 
     private static final String TAG = "MaintenantFragment";
+    public WebView myWebView;
     String url = "http://m.kooora.com/";
     ProgressDialog progressDialog;
 
@@ -75,19 +74,8 @@ public class MaintenantFragment extends Fragment {
         NativeExpressAdView adBanner_0 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_0);
         AdRequest request_0 = new AdRequest.Builder().build();
         adBanner_0.loadAd(request_0);
-
+        myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
         new Title().execute();
-
-        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
-        //myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
-
-        // Enable Javascript
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        // Force links and redirects to open in the WebView instead of in a browser
-        myWebView.setWebViewClient(new WebViewClient());
-
         return rootView;
     }
 
@@ -122,7 +110,7 @@ public class MaintenantFragment extends Fragment {
 
     private class Title extends AsyncTask<Void, Void, Void> {
 
-        String title;
+        String html;
 
         @Override
         protected void onPreExecute() {
@@ -136,10 +124,12 @@ public class MaintenantFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-
+            //Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
+            //Elements newsHeadlines = doc.select("#mp-itn b a");
             try {
-                Document document = Jsoup.connect(url).get();
-                title = document.title();
+                Document document = Jsoup.connect(url).timeout(10000).get();
+                Elements newsHeadlines = document.select("#otherNews");
+                html = newsHeadlines.toString();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -149,7 +139,20 @@ public class MaintenantFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Log.d(TAG, title);
+            Log.d(TAG, html);
+            String mime = "text/html";
+            String encoding = "utf-8";
+
+            myWebView.loadData(html, mime, encoding);
+            //myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
+
+            // Enable Javascript
+            WebSettings webSettings = myWebView.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+
+            // Force links and redirects to open in the WebView instead of in a browser
+            myWebView.setWebViewClient(new WebViewClient());
+
             progressDialog.dismiss();
         }
     }
