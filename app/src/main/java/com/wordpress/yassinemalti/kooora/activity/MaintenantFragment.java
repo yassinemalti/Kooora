@@ -143,7 +143,8 @@ public class MaintenantFragment extends Fragment {
             Log.d(TAG, html);
             String mime = "text/html";
             String encoding = "utf-8";
-            myWebView.loadData(html, mime, encoding);
+            //myWebView.loadData(html, mime, encoding);
+            myWebView.loadUrl("http://mahtlemcen.org/m.kooora/");
             WebSettings webSettings = myWebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             myWebView.setWebViewClient(new WebViewClient());
