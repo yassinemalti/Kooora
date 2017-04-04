@@ -54,9 +54,9 @@ public class ActualitesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_actualites, container, false);
-        NativeExpressAdView adBanner_4 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_4);
-        AdRequest request_4 = new AdRequest.Builder().build();
-        adBanner_4.loadAd(request_4);
+        NativeExpressAdView adBanner_actualites = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_actualites);
+        AdRequest request_actualites = new AdRequest.Builder().build();
+        adBanner_actualites.loadAd(request_actualites);
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_actualites_webview);

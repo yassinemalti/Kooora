@@ -29,7 +29,7 @@ public class MaintenantFragment extends Fragment {
 
     private static final String TAG = "MaintenantFragment";
     public WebView myWebView;
-    String url = "http://m.kooora.com/";
+    String url = "http://en.wikipedia.org/";
     ProgressDialog progressDialog;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -71,9 +71,9 @@ public class MaintenantFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_maintenant, container, false);
-        NativeExpressAdView adBanner_0 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_0);
-        AdRequest request_0 = new AdRequest.Builder().build();
-        adBanner_0.loadAd(request_0);
+        NativeExpressAdView adBanner_maintenant = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_maintenant);
+        AdRequest request_maintenant = new AdRequest.Builder().build();
+        adBanner_maintenant.loadAd(request_maintenant);
         myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
         new Title().execute();
         return rootView;

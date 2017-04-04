@@ -54,9 +54,9 @@ public class AjourdhuiFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_aujourdhui, container, false);
-        NativeExpressAdView adBanner_1 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_1);
-        AdRequest request_1 = new AdRequest.Builder().build();
-        adBanner_1.loadAd(request_1);
+        NativeExpressAdView adBanner_aujourdhui = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_aujourdhui);
+        AdRequest request_aujourdhui = new AdRequest.Builder().build();
+        adBanner_aujourdhui.loadAd(request_aujourdhui);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
         myWebView.loadUrl("http://m.kooora.com/?region=-1&area=0");

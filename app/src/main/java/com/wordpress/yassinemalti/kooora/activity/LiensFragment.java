@@ -54,9 +54,9 @@ public class LiensFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_liens, container, false);
-        NativeExpressAdView adBanner_4 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_4);
-        AdRequest request_4 = new AdRequest.Builder().build();
-        adBanner_4.loadAd(request_4);
+        NativeExpressAdView adBanner_liens = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_liens);
+        AdRequest request_liens = new AdRequest.Builder().build();
+        adBanner_liens.loadAd(request_liens);
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_liens_webview);

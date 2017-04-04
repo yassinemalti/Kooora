@@ -54,9 +54,9 @@ public class HierFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_hier, container, false);
-        NativeExpressAdView adBanner_3 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_3);
-        AdRequest request_3 = new AdRequest.Builder().build();
-        adBanner_3.loadAd(request_3);
+        NativeExpressAdView adBanner_hier = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_hier);
+        AdRequest request_hier = new AdRequest.Builder().build();
+        adBanner_hier.loadAd(request_hier);
 
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_hier_webview);

@@ -43,10 +43,10 @@
         android:layout_gravity="bottom|center_horizontal">
 
         <com.google.android.gms.ads.NativeExpressAdView
-            android:id="@+id/adBanner_2"
+            android:id="@+id/adBanner_demain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            ads:adUnitId="ca-app-pub-2326345806005611/6041337285"
+            ads:adUnitId="ca-app-pub-2326345806005611/1910138089"
             ads:adSize="280x70"/>
     </LinearLayout>
 

@@ -54,9 +54,9 @@ public class AproposFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_apropos, container, false);
-        NativeExpressAdView adBanner_5 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_5);
-        AdRequest request_5 = new AdRequest.Builder().build();
-        adBanner_5.loadAd(request_5);
+        NativeExpressAdView adBanner_apropos = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_apropos);
+        AdRequest request_apropos = new AdRequest.Builder().build();
+        adBanner_apropos.loadAd(request_apropos);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_apropos_webview);
         myWebView.loadUrl("http://yassinemalti.wordpress.com/");

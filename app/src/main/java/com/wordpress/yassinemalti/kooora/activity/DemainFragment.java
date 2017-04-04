@@ -54,9 +54,9 @@ public class DemainFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_demain, container, false);
-        NativeExpressAdView adBanner_2 = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_2);
-        AdRequest request_2 = new AdRequest.Builder().build();
-        adBanner_2.loadAd(request_2);
+        NativeExpressAdView adBanner_demain = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_demain);
+        AdRequest request_demain = new AdRequest.Builder().build();
+        adBanner_demain.loadAd(request_demain);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_demain_webview);
         myWebView.loadUrl("http://m.kooora.com/?region=-4");
