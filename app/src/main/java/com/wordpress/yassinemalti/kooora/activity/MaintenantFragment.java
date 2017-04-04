@@ -116,19 +116,21 @@ public class MaintenantFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setTitle("Title");
-            progressDialog.setMessage("Loading...");
+            progressDialog.setTitle(R.string.app_name);
+            progressDialog.setMessage("جاري التحديث...");
             progressDialog.setIndeterminate(false);
             progressDialog.show();
         }
 
         @Override
         protected Void doInBackground(Void... params) {
+            //myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
             //Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
             //Elements newsHeadlines = doc.select("#mp-itn b a");
+            url = "http://en.wikipedia.org/";
             try {
                 Document document = Jsoup.connect(url).timeout(10000).get();
-                Elements newsHeadlines = document.select("#otherNews");
+                Elements newsHeadlines = document.select("#mp-itn b a");
                 html = newsHeadlines.toString();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -142,17 +144,10 @@ public class MaintenantFragment extends Fragment {
             Log.d(TAG, html);
             String mime = "text/html";
             String encoding = "utf-8";
-
             myWebView.loadData(html, mime, encoding);
-            //myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
-
-            // Enable Javascript
             WebSettings webSettings = myWebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
-
-            // Force links and redirects to open in the WebView instead of in a browser
             myWebView.setWebViewClient(new WebViewClient());
-
             progressDialog.dismiss();
         }
     }
