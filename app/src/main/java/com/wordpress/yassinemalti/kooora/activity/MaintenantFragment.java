@@ -116,7 +116,6 @@ public class MaintenantFragment extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(getActivity());
-            progressDialog.setTitle(R.string.app_name);
             progressDialog.setMessage("جاري التحديث...");
             progressDialog.setIndeterminate(false);
             progressDialog.show();
