@@ -28,11 +28,13 @@
             android:title="روابط البث" />
     </group>
 
-    <group android:checkableBehavior="single">
+    <group>
         <item
             android:id="@+id/partager"
             android:icon="@drawable/partager"
             android:title="شارك التطبيق" />
+    </group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/apropos"
             android:icon="@drawable/apropos"

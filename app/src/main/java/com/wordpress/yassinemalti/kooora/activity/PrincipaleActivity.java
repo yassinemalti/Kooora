@@ -1,5 +1,6 @@
 package com.wordpress.yassinemalti.kooora.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -149,6 +150,16 @@ public class PrincipaleActivity extends AppCompatActivity
                 fragment = new ActualitesFragment();
                 title  = "روابط البث";
                 viewIsAtHome = false;
+                break;
+            case R.id.partager:
+                fragment = null;
+                title  = getSupportActionBar().getTitle().toString();
+                viewIsAtHome = false;
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.app_name);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.museearthistoiretlemcen");
+                startActivity(Intent.createChooser(sharingIntent, "شارك التطبيق عبر..."));
                 break;
             case R.id.apropos:
                 fragment = new ActualitesFragment();
