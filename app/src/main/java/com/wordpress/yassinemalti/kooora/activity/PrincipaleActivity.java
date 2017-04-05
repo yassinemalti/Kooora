@@ -210,7 +210,8 @@ public class PrincipaleActivity extends AppCompatActivity
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.app_name);
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.kooora");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+                        "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.kooora");
                 startActivity(Intent.createChooser(sharingIntent, "شارك التطبيق عبر..."));
                 break;
             case R.id.apropos:

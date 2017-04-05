@@ -63,11 +63,7 @@ public class AjourdhuiFragment extends Fragment {
         NativeExpressAdView adBanner_aujourdhui = (NativeExpressAdView) rootView.findViewById(R.id.adBanner_aujourdhui);
         AdRequest request_aujourdhui = new AdRequest.Builder().build();
         adBanner_aujourdhui.loadAd(request_aujourdhui);
-
-        WebView myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(new WebViewClient());
+        myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
         new LoadPage().execute();
         return rootView;
     }

@@ -17,12 +17,6 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.kooora.R;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
-
 public class MaintenantFragment extends Fragment {
 
     private static final String TAG = "MaintenantFragment";
