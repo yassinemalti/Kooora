@@ -20,7 +20,6 @@ import com.wordpress.yassinemalti.kooora.R;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
@@ -140,11 +139,12 @@ public class MaintenantFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Log.d(TAG, html);
+            //Log.d(TAG, html);
             String mime = "text/html";
             String encoding = "utf-8";
             //myWebView.loadData(html, mime, encoding);
-            myWebView.loadUrl("http://mahtlemcen.org/m.kooora/");
+            String maintenant_page_url = PrincipaleActivity.getmaintenant_page_url();
+            myWebView.loadUrl(maintenant_page_url);
             WebSettings webSettings = myWebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             myWebView.setWebViewClient(new WebViewClient());

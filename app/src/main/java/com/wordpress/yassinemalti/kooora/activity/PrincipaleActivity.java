@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,17 +14,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.wordpress.yassinemalti.kooora.R;
 
 public class PrincipaleActivity extends AppCompatActivity
@@ -36,13 +41,15 @@ public class PrincipaleActivity extends AppCompatActivity
                     LiensFragment.OnFragmentInteractionListener,
                     AproposFragment.OnFragmentInteractionListener{
 
+
+    private static final String TAG = "MaintenantFragment";
     private boolean viewIsAtHome;
     boolean doubleBackToExitPressedOnce = false;
     private int currentViewID;
-    private static String urlServer;
+    private static String maintenant_page_url;
 
-    public static String getUrlServer() {
-        return urlServer;
+    public static String getmaintenant_page_url() {
+        return maintenant_page_url;
     }
 
     @Override
@@ -64,7 +71,7 @@ public class PrincipaleActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         subscribeToPushService();
-        firebaseDatabaseRefresh();
+        firebaseConfigurationRefresh();
         navigationView.setCheckedItem(R.id.maintenant);
         displayView(R.id.maintenant);
 
@@ -158,7 +165,7 @@ public class PrincipaleActivity extends AppCompatActivity
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, R.string.app_name);
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.museearthistoiretlemcen");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.wordpress.yassinemalti.kooora");
                 startActivity(Intent.createChooser(sharingIntent, "شارك التطبيق عبر..."));
                 break;
             case R.id.apropos:
@@ -211,23 +218,23 @@ public class PrincipaleActivity extends AppCompatActivity
         FirebaseMessaging.getInstance().subscribeToTopic("news");
     }
 
-    private void firebaseDatabaseRefresh() {
+    private void firebaseConfigurationRefresh() {
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("urlServer");
+        final FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
+        firebaseRemoteConfig.setDefaults(R.xml.remote_config_defaults);
+        long cacheExpiration = 1; // one hour in seconds
+        firebaseRemoteConfig.fetch(cacheExpiration)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            maintenant_page_url = firebaseRemoteConfig.getString("maintenant_page_url");
+                            Log.d(TAG, maintenant_page_url);
+                            firebaseRemoteConfig.activateFetched();
+                        } else {
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue(String.class);
-                urlServer = value;
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
+                        }
+                    }
+                });
     }
-
 }
