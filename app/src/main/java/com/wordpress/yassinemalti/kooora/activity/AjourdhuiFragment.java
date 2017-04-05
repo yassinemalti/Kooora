@@ -1,7 +1,9 @@
 package com.wordpress.yassinemalti.kooora.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,6 +18,10 @@ import com.google.android.gms.ads.NativeExpressAdView;
 import com.wordpress.yassinemalti.kooora.R;
 
 public class AjourdhuiFragment extends Fragment {
+
+    public WebView myWebView;
+    ProgressDialog progressDialog;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,15 +65,10 @@ public class AjourdhuiFragment extends Fragment {
         adBanner_aujourdhui.loadAd(request_aujourdhui);
 
         WebView myWebView = (WebView) rootView.findViewById(R.id.activity_aujourdhui_webview);
-        myWebView.loadUrl("http://m.kooora.com/?region=-1&area=0");
-
-        // Enable Javascript
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-
-        // Force links and redirects to open in the WebView instead of in a browser
         myWebView.setWebViewClient(new WebViewClient());
-
+        new LoadPage().execute();
         return rootView;
     }
 
@@ -99,4 +100,35 @@ public class AjourdhuiFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private class LoadPage extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(getActivity());
+            progressDialog.setMessage("جاري التحديث...");
+            progressDialog.setIndeterminate(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            String aujourdhui_page_url = PrincipaleActivity.getaujourdhui_page_url();
+            myWebView.loadUrl(aujourdhui_page_url);
+            WebSettings webSettings = myWebView.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            myWebView.setWebViewClient(new WebViewClient());
+            progressDialog.dismiss();
+
+        }
+    }
+
 }

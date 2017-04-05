@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,15 +27,11 @@ public class MaintenantFragment extends Fragment {
 
     private static final String TAG = "MaintenantFragment";
     public WebView myWebView;
-    String url = "http://en.wikipedia.org/";
     ProgressDialog progressDialog;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -74,7 +69,7 @@ public class MaintenantFragment extends Fragment {
         AdRequest request_maintenant = new AdRequest.Builder().build();
         adBanner_maintenant.loadAd(request_maintenant);
         myWebView = (WebView) rootView.findViewById(R.id.activity_maintenant_webview);
-        new Title().execute();
+        new LoadPage().execute();
         return rootView;
     }
 
@@ -103,13 +98,10 @@ public class MaintenantFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 
-    private class Title extends AsyncTask<Void, Void, Void> {
-
-        String html;
+    private class LoadPage extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -122,33 +114,20 @@ public class MaintenantFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... params) {
-            //myWebView.loadUrl("http://m.kooora.com/?region=-1&area=6");
-            //Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
-            //Elements newsHeadlines = doc.select("#mp-itn b a");
-            url = "http://en.wikipedia.org/";
-            try {
-                Document document = Jsoup.connect(url).timeout(10000).get();
-                Elements newsHeadlines = document.select("#mp-itn b a");
-                html = newsHeadlines.toString();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
 
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            //Log.d(TAG, html);
-            String mime = "text/html";
-            String encoding = "utf-8";
-            //myWebView.loadData(html, mime, encoding);
+
             String maintenant_page_url = PrincipaleActivity.getmaintenant_page_url();
             myWebView.loadUrl(maintenant_page_url);
             WebSettings webSettings = myWebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             myWebView.setWebViewClient(new WebViewClient());
             progressDialog.dismiss();
+
         }
     }
 

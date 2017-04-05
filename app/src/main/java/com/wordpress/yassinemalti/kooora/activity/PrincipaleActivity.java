@@ -46,10 +46,57 @@ public class PrincipaleActivity extends AppCompatActivity
     private boolean viewIsAtHome;
     boolean doubleBackToExitPressedOnce = false;
     private int currentViewID;
+
     private static String maintenant_page_url;
+    private static String aujourdhui_page_url;
+    private static String demain_page_url;
+    private static String hier_page_url;
+    private static String actualites_page_url;
+    private static String liens_page_url;
+    private static String apropos_page_url;
+
+    private static String lien1_url;
+    private static String lien2_url;
+    private static String lien3_url;
+    private static String lien4_url;
+    private static String lien5_url;
 
     public static String getmaintenant_page_url() {
         return maintenant_page_url;
+    }
+    public static String getaujourdhui_page_url() {
+        return aujourdhui_page_url;
+    }
+    public static String getdemain_page_url() {
+        return demain_page_url;
+    }
+    public static String gethier_page_url() {
+        return hier_page_url;
+    }
+    public static String getactualites_page_url() {
+        return actualites_page_url;
+    }
+    public static String getliens_page_url() {
+        return liens_page_url;
+    }
+    public static String getapropos_page_url() {
+        return apropos_page_url;
+    }
+
+    public static String getlien1_url() {
+        return lien1_url;
+    }
+    public static String getlien2_url() {
+        return lien2_url;
+    }
+    public static String getlien3_url() {
+        return lien3_url;
+    }
+    public static String getlien4_url() {
+        return lien4_url;
+    }
+    public static String getlien5_url() {
+        return lien5_url;
     }
 
     @Override
@@ -228,9 +275,23 @@ public class PrincipaleActivity extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+
                             maintenant_page_url = firebaseRemoteConfig.getString("maintenant_page_url");
-                            Log.d(TAG, maintenant_page_url);
+                            aujourdhui_page_url = firebaseRemoteConfig.getString("aujourdhui_page_url");
+                            demain_page_url = firebaseRemoteConfig.getString("demain_page_url");
+                            hier_page_url = firebaseRemoteConfig.getString("hier_page_url");
+                            actualites_page_url = firebaseRemoteConfig.getString("actualites_page_url");
+                            liens_page_url = firebaseRemoteConfig.getString("liens_page_url");
+                            apropos_page_url = firebaseRemoteConfig.getString("apropos_page_url");
+
+                            lien1_url = firebaseRemoteConfig.getString("lien1_url");
+                            lien2_url = firebaseRemoteConfig.getString("lien2_url");
+                            lien3_url = firebaseRemoteConfig.getString("lien3_url");
+                            lien4_url = firebaseRemoteConfig.getString("lien4_url");
+                            lien5_url = firebaseRemoteConfig.getString("lien5_url");
+
                             firebaseRemoteConfig.activateFetched();
+
                         } else {
 
                         }
