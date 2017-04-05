@@ -41,6 +41,8 @@ public class PrincipaleActivity extends AppCompatActivity
                     LiensFragment.OnFragmentInteractionListener,
                     AproposFragment.OnFragmentInteractionListener{
 
+    SettingSQLiteDatabase mySettingSQLiteDatabase;
+
     private boolean viewIsAtHome;
     boolean doubleBackToExitPressedOnce = false;
     private int currentViewID;
@@ -97,6 +99,29 @@ public class PrincipaleActivity extends AppCompatActivity
         return lien5_url;
     }
 
+    public void dataInsertParameter(View view){
+        String PK = "maintenant_page_url";
+        String PV = maintenant_page_url;
+        long id = mySettingSQLiteDatabase.dataInsertParameter(PK,PV);
+        if (id<0){
+            Toast.makeText(this, "Erreur d'enregistrement du paramètre", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this, "Enregistrement avec succès", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void dataReadParameter(View view) {
+        maintenant_page_url = mySettingSQLiteDatabase.dataReadParameter("maintenant_page_url");
+    }
+
+    public void dataDeleteParameter(View view) {
+        mySettingSQLiteDatabase.dataDeleteParameter("maintenant_page_url");
+    }
+
+    public void dataUpdateParameter(View view) {
+        mySettingSQLiteDatabase.dataUpdateParameter("maintenant_page_url",maintenant_page_url);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +139,8 @@ public class PrincipaleActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mySettingSQLiteDatabase = new SettingSQLiteDatabase(this);
 
         subscribeToPushService();
         firebaseConfigurationRefresh();
