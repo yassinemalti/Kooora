@@ -41,8 +41,6 @@ public class PrincipaleActivity extends AppCompatActivity
                     LiensFragment.OnFragmentInteractionListener,
                     AproposFragment.OnFragmentInteractionListener{
 
-
-    private static final String TAG = "MaintenantFragment";
     private boolean viewIsAtHome;
     boolean doubleBackToExitPressedOnce = false;
     private int currentViewID;
