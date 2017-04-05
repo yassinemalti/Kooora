@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/groupeprincipal" android:checkableBehavior="single">
         <item
             android:id="@+id/maintenant"
             android:icon="@drawable/maintenant"
@@ -28,17 +28,19 @@
             android:title="روابط البث" />
     </group>
 
-    <group>
-        <item
-            android:id="@+id/partager"
-            android:icon="@drawable/partager"
-            android:title="شارك التطبيق" />
-    </group>
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/apropos"
-            android:icon="@drawable/apropos"
-            android:title="بخصوص التطبيق" />
+    <group android:id="@+id/groupesecondaire" >
+        <group>
+            <item
+                android:id="@+id/partager"
+                android:icon="@drawable/partager"
+                android:title="شارك التطبيق" />
+        </group>
+        <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/apropos"
+                android:icon="@drawable/apropos"
+                android:title="بخصوص التطبيق" />
+        </group>
     </group>
 
 </menu>
