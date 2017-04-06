@@ -31,6 +31,10 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.wordpress.yassinemalti.kooora.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class PrincipaleActivity extends AppCompatActivity
         implements  NavigationView.OnNavigationItemSelectedListener,
                     MaintenantFragment.OnFragmentInteractionListener,
@@ -101,6 +105,20 @@ public class PrincipaleActivity extends AppCompatActivity
         return lien5_url;
     }
 
+    public static Date convertStringToDate (String stringDate ) {
+        //String dateString = "03/26/2012 11:49:00 AM";
+        String dateString = stringDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+        Date convertedDate = new Date();
+        try {
+            convertedDate = dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return convertedDate;
+
+    }
+
     public void dataInsertParameter(){
         //String PK = "maintenant_page_url";
         //String PV = maintenant_page_url;
@@ -154,10 +172,10 @@ public class PrincipaleActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mySettingSQLiteDatabase = new SettingSQLiteDatabase(this);
-        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","060420171008");
+        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","06/04/2017 15:23");
         mySettingSQLiteDatabase.dataDeleteParameter("last_update_date");
-        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","060420171008");
-        mySettingSQLiteDatabase.dataUpdateParameter("last_update_date","060420171008");
+        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","06/04/2017 15:23");
+        mySettingSQLiteDatabase.dataUpdateParameter("last_update_date","06/04/2017 15:23");
         String myValue = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
         //Log.d(TAG, mySettingSQLiteDatabase.dataReadParameter("last_update_date"));
 

@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Date;
+
 /**
  * Created by yassinemalti on 07/09/2016.
  */
@@ -42,9 +44,12 @@ public class SettingSQLiteDatabase {
         while (cursor.moveToNext()) {
             int indexParameterValue = cursor.getColumnIndex(DBS.parameterValue);
             String parameterValue = cursor.getString(indexParameterValue);
+            if (parameterKey.toLowerCase().contains("date")) {
+                Date myDate = PrincipaleActivity.convertStringToDate(parameterValue);
+                parameterValue = myDate.toString();
+            }
             stringBuffer.append(parameterValue);
         }
-
         Log.d(TAG, "This is dataReadParameter method");
         Log.d(TAG, "parameterValue = " + stringBuffer.toString());
         return stringBuffer.toString();
