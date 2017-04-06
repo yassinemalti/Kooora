@@ -155,7 +155,11 @@ public class PrincipaleActivity extends AppCompatActivity
 
         mySettingSQLiteDatabase = new SettingSQLiteDatabase(this);
         mySettingSQLiteDatabase.dataInsertParameter("last_update_date","060420171008");
-        Log.d(TAG, mySettingSQLiteDatabase.dataReadParameter("last_update_date"));
+        mySettingSQLiteDatabase.dataDeleteParameter("last_update_date");
+        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","060420171008");
+        mySettingSQLiteDatabase.dataUpdateParameter("last_update_date","060420171008");
+        String myValue = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
+        //Log.d(TAG, mySettingSQLiteDatabase.dataReadParameter("last_update_date"));
 
         subscribeToPushService();
         firebaseConfigurationRefresh();

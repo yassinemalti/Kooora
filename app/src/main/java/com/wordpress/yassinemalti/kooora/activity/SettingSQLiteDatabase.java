@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -14,9 +15,11 @@ import android.widget.Toast;
 public class SettingSQLiteDatabase {
 
     DBS mySettingDatabase;
+    private static final String TAG = "PrincipaleActivity";
 
     public SettingSQLiteDatabase(Context context) {
         mySettingDatabase = new DBS(context);
+        Log.d(TAG, "This is SettingSQLiteDatabase method");
     }
 
     public long dataInsertParameter(String parameterKey, String parameterValue) {
@@ -25,6 +28,8 @@ public class SettingSQLiteDatabase {
         contentValues.put(DBS.parameterKey,parameterKey);
         contentValues.put(DBS.parameterValue,parameterValue);
         long id = sqLiteDatabase.insert(DBS.settingTableName,null,contentValues);
+        Log.d(TAG, "This is dataInsertParameter method");
+        Log.d(TAG, "id = " + id);
         return id;
     }
 
@@ -34,10 +39,15 @@ public class SettingSQLiteDatabase {
         Cursor cursor = sqLiteDatabase.query(DBS.settingTableName, columns, DBS.parameterKey +
                 " = '" + parameterKey + "'",null,null,null,null);
         StringBuffer stringBuffer = new StringBuffer();
+        while (cursor.moveToNext()) {
             int indexParameterValue = cursor.getColumnIndex(DBS.parameterValue);
             String parameterValue = cursor.getString(indexParameterValue);
+            stringBuffer.append(parameterValue);
+        }
 
-        return parameterValue;
+        Log.d(TAG, "This is dataReadParameter method");
+        Log.d(TAG, "parameterValue = " + stringBuffer.toString());
+        return stringBuffer.toString();
     }
 
     public void dataUpdateParameter(String parameterKey, String parameterValue) {
@@ -46,17 +56,19 @@ public class SettingSQLiteDatabase {
         contentValues.put(DBS.parameterValue,parameterValue);
         sqLiteDatabase.update(DBS.settingTableName, contentValues,
                 DBS.parameterKey + " = ?", new String[]{parameterKey});
+        Log.d(TAG, "This is dataUpdateParameter method");
     }
 
     public void dataDeleteParameter(String parameterKey) {
         SQLiteDatabase sqLiteDatabase = mySettingDatabase.getWritableDatabase();
         sqLiteDatabase.delete(DBS.settingTableName,
                 DBS.parameterKey + " = ?", new String[]{parameterKey});
+        Log.d(TAG, "This is dataDeleteParameter method");
     }
 
     static class DBS extends SQLiteOpenHelper {
 
-        private static final String dataBaseName = "SettingSQLiteDatabase";
+        private static final String dataBaseName = "KoooraSQLiteDatabase";
         private static final int dataBaseVersion = 1;
 
         private static final String settingTableName = "settingTable";
@@ -82,9 +94,9 @@ public class SettingSQLiteDatabase {
 
             try{
                 sqLiteDatabase.execSQL(createSettingTable);
-                Toast.makeText(context, "This is onCreate method", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "This is onCreate method");
             }catch (SQLException e) {
-                Toast.makeText(context, "Due to: " + e, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Due to: " + e);
             }
 
         }
@@ -93,11 +105,11 @@ public class SettingSQLiteDatabase {
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
             try{
-                Toast.makeText(context, "This is onUpgrade method", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "This is onUpgrade method");
                 sqLiteDatabase.execSQL(dropSettingTable);
                 onCreate(sqLiteDatabase);
             }catch (SQLException e) {
-                Toast.makeText(context, "Due to: " + e, Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Due to: " + e);
             }
 
         }
