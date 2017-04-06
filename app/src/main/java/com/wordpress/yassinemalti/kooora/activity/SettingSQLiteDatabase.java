@@ -44,10 +44,6 @@ public class SettingSQLiteDatabase {
         while (cursor.moveToNext()) {
             int indexParameterValue = cursor.getColumnIndex(DBS.parameterValue);
             String parameterValue = cursor.getString(indexParameterValue);
-            if (parameterKey.toLowerCase().contains("date")) {
-                Date myDate = PrincipaleActivity.convertStringToDate(parameterValue);
-                parameterValue = myDate.toString();
-            }
             stringBuffer.append(parameterValue);
         }
         Log.d(TAG, "This is dataReadParameter method");

@@ -116,41 +116,6 @@ public class PrincipaleActivity extends AppCompatActivity
             e.printStackTrace();
         }
         return convertedDate;
-
-    }
-
-    public void dataInsertParameter(){
-        //String PK = "maintenant_page_url";
-        //String PV = maintenant_page_url;
-
-        String PK = "last_update_date";
-        String PV = "060420171008";
-
-        long id = mySettingSQLiteDatabase.dataInsertParameter(PK,PV);
-        if (id<0){
-            Toast.makeText(this, "Erreur d'enregistrement du paramètre", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "dataInsertParameter, erreur");
-        }else{
-            Toast.makeText(this, "Enregistrement avec succès", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "dataInsertParameter, succès");
-        }
-    }
-
-    public void dataReadParameter() {
-        last_update_date = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
-        Log.d(TAG, "dataReadParameter");
-        Log.d(TAG, last_update_date);
-    }
-
-    public void dataDeleteParameter() {
-        mySettingSQLiteDatabase.dataDeleteParameter("last_update_date");
-        Log.d(TAG, "dataDeleteParameter");
-    }
-
-    public void dataUpdateParameter() {
-        mySettingSQLiteDatabase.dataUpdateParameter("last_update_date","010120180000");
-        Log.d(TAG, "dataUpdateParameter");
-        Log.d(TAG, last_update_date);
     }
 
     @Override
@@ -172,12 +137,6 @@ public class PrincipaleActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mySettingSQLiteDatabase = new SettingSQLiteDatabase(this);
-        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","06/04/2017 15:23");
-        mySettingSQLiteDatabase.dataDeleteParameter("last_update_date");
-        mySettingSQLiteDatabase.dataInsertParameter("last_update_date","06/04/2017 15:23");
-        mySettingSQLiteDatabase.dataUpdateParameter("last_update_date","06/04/2017 15:23");
-        String myValue = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
-        //Log.d(TAG, mySettingSQLiteDatabase.dataReadParameter("last_update_date"));
 
         subscribeToPushService();
         firebaseConfigurationRefresh();
@@ -338,6 +297,16 @@ public class PrincipaleActivity extends AppCompatActivity
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+
+                            String myNewValue;
+
+                            myNewValue = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
+                            last_update_date = firebaseRemoteConfig.getString("last_update_date");
+                            if(myNewValue.length() == 0)
+                                mySettingSQLiteDatabase.dataInsertParameter("last_update_date",last_update_date);
+                            else
+                                mySettingSQLiteDatabase.dataUpdateParameter("last_update_date",last_update_date);
+                            Date myDate = convertStringToDate(last_update_date);
 
                             maintenant_page_url = firebaseRemoteConfig.getString("maintenant_page_url");
                             aujourdhui_page_url = firebaseRemoteConfig.getString("aujourdhui_page_url");
