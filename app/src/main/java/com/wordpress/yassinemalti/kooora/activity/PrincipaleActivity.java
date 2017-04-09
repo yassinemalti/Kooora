@@ -22,13 +22,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
+import com.wordpress.yassinemalti.kooora.BuildConfig;
 import com.wordpress.yassinemalti.kooora.R;
 
 import java.text.ParseException;
@@ -46,6 +43,7 @@ public class PrincipaleActivity extends AppCompatActivity
                     AproposFragment.OnFragmentInteractionListener{
 
     SettingSQLiteDatabase mySettingSQLiteDatabase;
+    private FirebaseRemoteConfig remoteConfig;
     private static final String TAG = "PrincipaleActivity";
 
     private boolean viewIsAtHome;
@@ -115,6 +113,7 @@ public class PrincipaleActivity extends AppCompatActivity
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        Log.d(TAG, convertedDate.toString());
         return convertedDate;
     }
 
@@ -138,8 +137,15 @@ public class PrincipaleActivity extends AppCompatActivity
 
         mySettingSQLiteDatabase = new SettingSQLiteDatabase(this);
 
+        FirebaseRemoteConfigSettings remoteConfigSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setDeveloperModeEnabled(BuildConfig.DEBUG)
+                .build();
+
+        remoteConfig = FirebaseRemoteConfig.getInstance();
+        remoteConfig.setConfigSettings(remoteConfigSettings);
+
+        firebaseConfigurationFetch();
         subscribeToPushService();
-        firebaseConfigurationRefresh();
         navigationView.setCheckedItem(R.id.maintenant);
         displayView(R.id.maintenant);
 
@@ -287,45 +293,54 @@ public class PrincipaleActivity extends AppCompatActivity
         FirebaseMessaging.getInstance().subscribeToTopic("news");
     }
 
-    private void firebaseConfigurationRefresh() {
+    private void firebaseConfigurationFetch() {
 
-        final FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-        firebaseRemoteConfig.setDefaults(R.xml.remote_config_defaults);
-        long cacheExpiration = 1; // one hour in seconds
-        firebaseRemoteConfig.fetch(cacheExpiration)
+        long cacheExpiration = 3600;
+        if (remoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()) {
+            cacheExpiration = 1;
+        }
+
+        remoteConfig.fetch(cacheExpiration)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
 
-                            String myNewValue;
+                            String myCurrentValue;
 
-                            myNewValue = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
-                            last_update_date = firebaseRemoteConfig.getString("last_update_date");
-                            if(myNewValue.length() == 0)
-                                mySettingSQLiteDatabase.dataInsertParameter("last_update_date",last_update_date);
+                            myCurrentValue = mySettingSQLiteDatabase.dataReadParameter("last_update_date");
+                            last_update_date = remoteConfig.getString("last_update_date");
+                            if(myCurrentValue.length() == 0) {
+                                mySettingSQLiteDatabase.dataInsertParameter("last_update_date", last_update_date);
+                                mySettingSQLiteDatabase.dataReadParameter("last_update_date");
+                            }
                             else
-                                mySettingSQLiteDatabase.dataUpdateParameter("last_update_date",last_update_date);
-                            Date myDate = convertStringToDate(last_update_date);
+                                if(convertStringToDate(last_update_date).before(convertStringToDate(myCurrentValue)))
+                                {
+                                    mySettingSQLiteDatabase.dataUpdateParameter("last_update_date",last_update_date);
+                                    mySettingSQLiteDatabase.dataReadParameter("last_update_date");
+                                }
 
-                            maintenant_page_url = firebaseRemoteConfig.getString("maintenant_page_url");
-                            aujourdhui_page_url = firebaseRemoteConfig.getString("aujourdhui_page_url");
-                            demain_page_url = firebaseRemoteConfig.getString("demain_page_url");
-                            hier_page_url = firebaseRemoteConfig.getString("hier_page_url");
-                            actualites_page_url = firebaseRemoteConfig.getString("actualites_page_url");
-                            liens_page_url = firebaseRemoteConfig.getString("liens_page_url");
-                            apropos_page_url = firebaseRemoteConfig.getString("apropos_page_url");
+                            mySettingSQLiteDatabase.dataReadParameter("last_update_date");
 
-                            lien1_url = firebaseRemoteConfig.getString("lien1_url");
-                            lien2_url = firebaseRemoteConfig.getString("lien2_url");
-                            lien3_url = firebaseRemoteConfig.getString("lien3_url");
-                            lien4_url = firebaseRemoteConfig.getString("lien4_url");
-                            lien5_url = firebaseRemoteConfig.getString("lien5_url");
+                            maintenant_page_url = remoteConfig.getString("maintenant_page_url");
+                            aujourdhui_page_url = remoteConfig.getString("aujourdhui_page_url");
+                            demain_page_url = remoteConfig.getString("demain_page_url");
+                            hier_page_url = remoteConfig.getString("hier_page_url");
+                            actualites_page_url = remoteConfig.getString("actualites_page_url");
+                            liens_page_url = remoteConfig.getString("liens_page_url");
+                            apropos_page_url = remoteConfig.getString("apropos_page_url");
 
-                            firebaseRemoteConfig.activateFetched();
+                            lien1_url = remoteConfig.getString("lien1_url");
+                            lien2_url = remoteConfig.getString("lien2_url");
+                            lien3_url = remoteConfig.getString("lien3_url");
+                            lien4_url = remoteConfig.getString("lien4_url");
+                            lien5_url = remoteConfig.getString("lien5_url");
+
+                            remoteConfig.activateFetched();
 
                         } else {
-
+                            Log.e(TAG, "Fetch failed.");
                         }
                     }
                 });
