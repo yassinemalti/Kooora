@@ -142,6 +142,7 @@ public class PrincipaleActivity extends AppCompatActivity
                 .build();
 
         remoteConfig = FirebaseRemoteConfig.getInstance();
+        remoteConfig.setDefaults(R.xml.remote_config_defaults);
         remoteConfig.setConfigSettings(remoteConfigSettings);
 
         firebaseConfigurationFetch();

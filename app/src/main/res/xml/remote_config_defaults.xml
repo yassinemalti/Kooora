@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMaps>
+
+    <entry>
+        <key>last_update_date</key>
+        <value>26/03/2018 11:53</value>
+        <key>maintenant_page_url</key>
+        <value>http://mahtlemcen.org/m.kooora/</value>
+        <key>aujourdhui_page_url</key>
+        <value>http://m.kooora.com/?region=-1&area=0</value>
+        <key>demain_page_url</key>
+        <value>http://m.kooora.com/?region=-4</value>
+        <key>hier_page_url</key>
+        <value>http://m.kooora.com/?region=-3</value>
+        <key>actualites_page_url</key>
+        <value>http://m.kooora.com/?n=0&o=n</value>
+        <key>liens_page_url</key>
+        <value>http://m.kooora.com/?n=0&o=v</value>
+        <key>apropos_page_url</key>
+        <value>http://yassinemalti.wordpress.com/</value>
+        <key>lien1_url</key>
+        <value>http://www.kooora.com/</value>
+        <key>lien2_url</key>
+        <value>http://www.kooora.com/</value>
+        <key>lien3_url</key>
+        <value>http://www.kooora.com/</value>
+        <key>lien4_url</key>
+        <value>http://www.kooora.com/</value>
+        <key>lien5_url</key>
+        <value>http://www.kooora.com/</value>
+    </entry>
+
+</defaultsMaps>
