@@ -31,7 +31,7 @@ public class SettingSQLiteDatabase {
         contentValues.put(DBS.parameterValue,parameterValue);
         long id = sqLiteDatabase.insert(DBS.settingTableName,null,contentValues);
         Log.d(TAG, "This is dataInsertParameter method");
-        Log.d(TAG, "id = " + id);
+        Log.d(TAG, "parameterKey = " + parameterKey + ", parameterValue = " + parameterValue);
         return id;
     }
 
@@ -58,6 +58,7 @@ public class SettingSQLiteDatabase {
         sqLiteDatabase.update(DBS.settingTableName, contentValues,
                 DBS.parameterKey + " = ?", new String[]{parameterKey});
         Log.d(TAG, "This is dataUpdateParameter method");
+        Log.d(TAG, "parameterKey = " + parameterKey + ", parameterValue = " + parameterValue);
     }
 
     public void dataDeleteParameter(String parameterKey) {
@@ -65,6 +66,7 @@ public class SettingSQLiteDatabase {
         sqLiteDatabase.delete(DBS.settingTableName,
                 DBS.parameterKey + " = ?", new String[]{parameterKey});
         Log.d(TAG, "This is dataDeleteParameter method");
+        Log.d(TAG, "parameterKey = " + parameterKey );
     }
 
     static class DBS extends SQLiteOpenHelper {
